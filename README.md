@@ -4,6 +4,10 @@ Clever JSON Proxy Server
 - Async Editing JSON data on-the-fly using Promises
 - Gzip & Deflate Compression
 
+```
+npm install jsoxy
+```
+
 Usage example:
 
 ```
