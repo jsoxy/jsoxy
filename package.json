@@ -1,0 +1,24 @@
+{
+  "name": "jsoxy",
+  "version": "1.0.0",
+  "description": "Clever JSON Proxy Server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsoxy/jsoxy.git"
+  },
+  "keywords": [
+    "json",
+    "proxy",
+    "promise"
+  ],
+  "author": "Artico Bandurini",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jsoxy/jsoxy/issues"
+  },
+  "homepage": "https://github.com/jsoxy/jsoxy#readme"
+}
