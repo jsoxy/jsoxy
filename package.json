@@ -1,6 +1,6 @@
 {
   "name": "jsoxy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "dependencies": {
     "request": "^2.81.0",
     "url": "^0.11.0"
