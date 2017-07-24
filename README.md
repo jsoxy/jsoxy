@@ -3,6 +3,10 @@ Clever JSON Proxy Server
 
 - Async Editing JSON data on-the-fly using Promises
 - Gzip & Deflate Compression
+- URL re-write using Regular Expressions
+
+For now only GET requests are supported.
+Pull requests are pretty much welcomed!
 
 ```
 npm install jsoxy
@@ -57,5 +61,3 @@ const port = 4001;
 console.log('Proxy started on port ' + port + ' (target ' + target + ')');
 
 ```
-
-For now only GET requests are supported.

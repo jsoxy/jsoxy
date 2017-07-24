@@ -82,10 +82,10 @@ module.exports = class Jsoxy {
 					if (err) console.log('Server Error:', err);
 				});
 			};
-	
+			
+			let encoded = false;
 			if ('accept-encoding' in req.headers) {
 				const encodings = req.headers['accept-encoding'].split(',').map(str => str.trim().toLowerCase());
-				let encoded = false;
 				for (let encoding of ['deflate', 'gzip']) {
 					if (encodings.includes(encoding)) {
 						zlib[encoding](new Buffer(data || '', 'utf-8'), (e, data) => {
@@ -95,11 +95,8 @@ module.exports = class Jsoxy {
 						break;
 					}
 				}
-				if (!encoded) {
-					_send(err, data, code, message, headers);
-				}
 			}
-			else {
+			if (!encoded) {
 				_send(err, data, code, message, headers);
 			}
 		};
