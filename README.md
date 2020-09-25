@@ -1,4 +1,4 @@
-# Jsoxy [![npm version](https://badge.fury.io/js/jsoxy.png)](https://npmjs.org/package/jsoxy)
+# Jsoxy [![Build Status](https://travis-ci.org/jsoxy/jsoxy.png?branch=master)](https://travis-ci.org/jsoxy/jsoxy) [![npm version](https://badge.fury.io/js/jsoxy.png)](https://npmjs.org/package/jsoxy)
 Clever JSON Proxy Server
 
 - Async Editing JSON data on-the-fly using Promises
