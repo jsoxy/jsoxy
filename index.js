@@ -9,7 +9,7 @@ module.exports = class Jsoxy {
 	
 	constructor(options) {
 		
-		if (!options.target) throw new Error('Target URL is required for Jsoxy to start!');
+		if (!options || !options.target) throw new Error('Target URL is required for Jsoxy to start!');
 		this.strict = !!options.strict;
 		this.editors = options.editors || {};
 		
