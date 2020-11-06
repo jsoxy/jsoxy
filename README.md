@@ -24,9 +24,9 @@ Pull requests are pretty much welcomed!
 npm install jsoxy
 ```
 
-##Tutorial
+## Tutorial
 
-###Standalone server with `.jsoxy` directory for configuration
+### Standalone server with `.jsoxy` directory for configuration
 
 Right after the installation, move `.jsoxy` directory from `node_modules/jsoxy` to the root of your project:
 
@@ -70,7 +70,7 @@ Target and Port can be overridden via command line parameters:
 node node_modules/jsoxy/jsoxy http://api.github.com 8080
 ```
 
-####Setting up Editors
+#### Setting up Editors
 
 `.jsoxy` directory can contain `.js` files, used as editors. Editor is just a module object with parameters:
 
@@ -85,7 +85,7 @@ node node_modules/jsoxy/jsoxy http://api.github.com 8080
 - **headers**
 	-- object contains any number of headers to be added to the request (`Authorization` for example)
 
-#####Simple editor examples
+##### Simple editor examples
 
 If you need to change the Date format into a Timestamp, it's easy with Jsoxy:
 
@@ -129,7 +129,7 @@ Complete examples can be found inside the `.jsoxy` directory of this repo.
 This allows for different configurations to be used with the same Jsoxy instance.
 
 
-###Using as a script
+### Using as a script
 
 Jsoxy can be also used as a part of your application.
 
