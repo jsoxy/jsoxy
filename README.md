@@ -49,14 +49,14 @@ Default `jsoxy.json` is very simple:
 GitHub API here is used just as an example, it can be any JSON API instead.
 
 - **target**
-	-- is an URL to the JSON API to proxy (without trailing slash).
+  - is an URL to the JSON API to proxy (without trailing slash).
 
 - **port**
-	-- is for Jsoxy to listen to.
+  - is for Jsoxy to listen to.
 
 - **strict**
-	-- means that you don't want to serve URIs that don't match to any editor (pass-thru without changes).
-	If `strict` is `true`, error 403 (Access Denied) will be served instead of an unchanged API response.
+  - means that you don't want to serve URIs that don't match to any editor (pass-thru without changes).
+  If `strict` is `true`, error 403 (Access Denied) will be served instead of an unchanged API response.
 
 You can set your parameters in the `jsoxy.json` file and then just run:
 
@@ -75,15 +75,15 @@ node node_modules/jsoxy/jsoxy http://api.github.com 8080
 `.jsoxy` directory can contain `.js` files, used as editors. Editor is just a module object with parameters:
 
 - **match**
-	-- regular expression to match requesting URI pathname (MANDATORY)
+  - regular expression to match requesting URI pathname (MANDATORY)
 - **replace**
-	-- string to replace the match with (e.g. `/items/(.*)` > `/items/?id=$1`)
+  - string to replace the match with (e.g. `/items/(.*)` > `/items/?id=$1`)
 - **get**
-	-- editor function itself, used to modify the `body` coming as the only argument.
+  - editor function itself, used to modify the `body` coming as the only argument.
 - **params**
-	-- object contains any number of query parameters to be added to the request URI (`access_token` for example)
+  - object contains any number of query parameters to be added to the request URI (`access_token` for example)
 - **headers**
-	-- object contains any number of headers to be added to the request (`Authorization` for example)
+  - object contains any number of headers to be added to the request (`Authorization` for example)
 
 ##### Simple editor examples
 
@@ -91,17 +91,17 @@ If you need to change the Date format into a Timestamp, it's easy with Jsoxy:
 
 ```
 {
-	match: /^\/jsoxy$/,
-	
-	replace: '/orgs/jsoxy',
-	
-	get: function(body) {
-		
-		// convert updated_at date format into a timestamp
-		body.updated_at = Date.parse(body.updated_at);
-		
-		return Promise.resolve(body);
-	}
+  match: /^\/jsoxy$/,
+  
+  replace: '/orgs/jsoxy',
+  
+  get: function(body) {
+    
+    // convert updated_at date format into a timestamp
+    body.updated_at = Date.parse(body.updated_at);
+    
+    return Promise.resolve(body);
+  }
 }
 ```
 
@@ -113,12 +113,12 @@ If you need to hide your access token from end users, it's done like this:
 
 ```
 {
-	match: /^\/user/,
-	
-	// replace XXXXX with your access token
-	headers: {
-		Authorization: "token XXXXX"
-	}
+  match: /^\/user/,
+  
+  // replace XXXXX with your access token
+  headers: {
+    Authorization: "token XXXXX"
+  }
 }
 ```
 
@@ -145,37 +145,37 @@ const target = 'http://localhost:4000/api';
 const port = 4001;
 
 (new Jsoxy({
-	target: target,
-	
-	// whether to serve unmatched URIs
-	// defaults to false (pass-thru), if true - 403 error
-	strict: false,
-	
-	editors: {
-		
-		// arbitrary name of editor (items in this case)
-		items: {
-			
-			// matching to requested URI
-			match: /\/items\/(.+)/,
-			
-			// replace macthed URI using regexp
-			replace: '/real-items-path/?id=$1',
-			
-			// method name below is corresponding to the request's method
-			get: function(body) {
-				
-				// ASYNC modify response object
-				return new Promise((resolve, reject) => {
-					body = {key: 'value'};
-					resolve(body);
-				});
-				
-				// or SYNC modify response object
-				body = {key: 'value'};
-				return Promise.resolve(body);
-			}
-		}
-	}
+  target: target,
+  
+  // whether to serve unmatched URIs
+  // defaults to false (pass-thru), if true - 403 error
+  strict: false,
+  
+  editors: {
+    
+    // arbitrary name of editor (items in this case)
+    items: {
+      
+      // matching to requested URI
+      match: /\/items\/(.+)/,
+      
+      // replace macthed URI using regexp
+      replace: '/real-items-path/?id=$1',
+      
+      // method name below is corresponding to the request's method
+      get: function(body) {
+        
+        // ASYNC modify response object
+        return new Promise((resolve, reject) => {
+          body = {key: 'value'};
+          resolve(body);
+        });
+        
+        // or SYNC modify response object
+        body = {key: 'value'};
+        return Promise.resolve(body);
+      }
+    }
+  }
 })).listen(port);
 ```
